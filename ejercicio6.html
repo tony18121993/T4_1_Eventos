@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cambia colores</h1>
+    <p>Coloca el puntero sobre el título para cambiar el color de la imagen. Pasa el puntero sobre los valores en hexadecimal para ver el color correspondiente.</p>
+    <table>
+        <tr>
+            <th>Color en Hexadecimal</th>
+            <th>Nombre del Color</th>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#FF0000</td>
+            <td>Rojo</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#00FF00</td>
+            <td>Verde</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#0000FF</td>
+            <td>Azul</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#FFFF00</td>
+            <td>Amarillo</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#FF00FF</td>
+            <td>Rosa</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#008000</td>
+            <td>Verde oscuro</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#800080</td>
+            <td>Púrpura</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#00FFFF</td>
+            <td>Cian</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#C0C0C0</td>
+            <td>Plata</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#808080</td>
+            <td>Gris</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#FFA500</td>
+            <td>Naranja</td>
+        </tr>
+        <tr onmouseover="cambiaColor(this)" onmouseout="restauraColor(this)">
+            <td>#800000</td>
+            <td>Marrón</td>
+        </tr>
+    </table>
+
+    <script>
+        function cambiaColor(rowElement) {
+            const hexValue = rowElement.cells[0].textContent;
+            rowElement.style.backgroundColor = hexValue;
+            rowElement.cells[0].textContent = rowElement.cells[1].textContent;
+        }
+
+        function restauraColor(rowElement) {
+            const colorName = rowElement.cells[1].textContent;
+            rowElement.style.backgroundColor = "";
+            rowElement.cells[0].textContent = rowElement.cells[0].getAttribute("data-hex");
+        }
+
+        const colorRows = document.querySelectorAll("table tr");
+        colorRows.forEach(row => {
+            row.cells[0].setAttribute("data-hex", row.cells[0].textContent);
+        });
+    </script>
+</body>
+</html>

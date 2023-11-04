@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formulario de Contacto</h1>
+    <form>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" onFocus="ayuda('Ayuda: Ingresa tu nombre')" onBlur="ocultaAyuda()">
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" onFocus="ayuda('Ayuda: Ingresa tu dirección de correo electrónico')" onBlur="ocultaAyuda()">
+
+        <label for="comentario">Comentario:</label>
+        <textarea id="comentario" name="comentario" onFocus="ayuda('Ayuda: Deja tu comentario aquí')" onBlur="ocultaAyuda()"></textarea>
+
+        <button type="submit" onFocus="ayuda('Ayuda: Haz clic para enviar el formulario')" onBlur="ocultaAyuda()">Enviar</button>
+        <button type="reset" onFocus="ayuda('Ayuda: Haz clic para restablecer el formulario')" onBlur="ocultaAyuda()">Resetear</button>
+    </form>
+
+    <div id="helpText" style="display: none;"></div>
+
+    <script>
+        function ayuda(text) {
+            const helpText = document.getElementById("helpText");
+            helpText.style.display = "block";
+            helpText.innerText = text;
+        }
+
+        function ocultaAyuda() {
+            const helpText = document.getElementById("helpText");
+            helpText.style.display = "none";
+            helpText.innerText = "";
+        }
+    </script>
+</body>
+</html>
